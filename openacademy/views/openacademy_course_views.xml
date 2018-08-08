@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- This is the form declaration -->
+<record model="ir.ui.view" id="course_form_view">
+	<field name="name">course.form</field>
+	<field name="model">openacademy.course</field>
+	<field name="arch" type="xml">
+		<!-- <form string="Course Form">
+			<field name="name" />
+			<field name="description" />
+		</form> -->
+		<form string="Course Form">
+			<!-- Note: default form columns are 4
+			... so, defining a colspan of 4 will
+			stretch the field in the entire form -->
+			 <group colspan="2" col="2">
+				
+				<field name="name" colspan="4" />
+				<field name="responsible_id"/>
+			
+			</group>
+				<notebook colspan="4">
+					<page string="Description">
+						<field name="description" colspan="4" nolabel="1" />
+					</page>
+					<page string="About">
+						<label string="This is an example of notebooks" />
+					</page>
+					<page  string="Sessions">
+						 
+		                <field name="session_ids" mode="tree" nolabel="1" colspan="4">
+		                    <tree string="Registered sessions">
+		                        <field name="name"/>
+		                        <field name="instructor_id"/>
+		                    </tree>
+		                </field> 
+           
+					</page>
+				</notebook>
+        </form>
+	</field>
+</record>
+
+<!-- This is the form declaration -->
+<record model="ir.ui.view" id="course_tree_view">
+	<field name="name">course.tree</field>
+	<field name="model">openacademy.course</field>
+	<field name="arch" type="xml">
+		<tree string="Course Tree">
+			<field name="name" />
+			<!-- Remember that any tag who have no children can be written
+			like above. But you can still write the full XML form
+			like this if you want
+			<field name="name">
+			</field>
+			-->
+			<field name="responsible_id" />
+		</tree>
+	</field>
+</record>
+</odoo>
